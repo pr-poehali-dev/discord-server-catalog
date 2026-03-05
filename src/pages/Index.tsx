@@ -102,7 +102,7 @@ export default function Index() {
         </p>
       </section>
 
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-2xl mx-auto px-6">
 
         {/* Add server row */}
         <div className="mb-3">
@@ -164,23 +164,27 @@ export default function Index() {
 
         {/* Table */}
         <section className="mb-12 animate-fade-in">
+          {search && (
+            <p className="text-xs mb-2" style={{ color: "var(--dc-text-muted)" }}>
+              {filtered.length} result{filtered.length !== 1 ? "s" : ""} for <span style={{ color: "var(--dc-text-secondary)" }}>"{search}"</span>
+            </p>
+          )}
           <div className="rounded-lg overflow-hidden" style={{ border: "1px solid var(--dc-border)" }}>
 
             {/* Header */}
             <div
-              className="grid text-xs font-bold uppercase tracking-wider px-5 py-3.5"
+              className="grid text-xs font-bold uppercase tracking-wider px-5 py-3"
               style={{
-                gridTemplateColumns: "56px 110px 1fr 140px 210px",
+                gridTemplateColumns: "44px 90px 1fr 120px",
                 backgroundColor: "var(--dc-bg-secondary)",
-                color: "var(--dc-text-secondary)",
+                color: "var(--dc-text-muted)",
                 borderBottom: "1px solid var(--dc-border)"
               }}
             >
               <span>Badge</span>
               <span>Tag</span>
               <span>Server</span>
-              <span>Server Invite</span>
-              <span>Server ID</span>
+              <span>Invite</span>
             </div>
 
             {/* Rows */}
@@ -195,29 +199,29 @@ export default function Index() {
                   key={s.id}
                   className="grid items-center px-5 transition-colors"
                   style={{
-                    gridTemplateColumns: "56px 110px 1fr 140px 210px",
+                    gridTemplateColumns: "44px 90px 1fr 120px",
                     backgroundColor: "var(--dc-bg-tertiary)",
                     borderBottom: i < paginated.length - 1 ? "1px solid var(--dc-border-subtle)" : "none",
-                    minHeight: "54px",
+                    minHeight: "50px",
                     cursor: "default",
                   }}
                   onMouseOver={e => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.025)")}
                   onMouseOut={e => (e.currentTarget.style.backgroundColor = "var(--dc-bg-tertiary)")}
                 >
-                  <span className="text-lg leading-none">{s.badge}</span>
+                  <span className="text-base leading-none">{s.badge}</span>
                   <span
-                    className="text-sm font-bold tracking-wide"
-                    style={{ color: "var(--dc-text-primary)", fontFamily: "'IBM Plex Mono', monospace" }}
+                    className="text-xs font-bold tracking-widest"
+                    style={{ color: "var(--dc-accent)", fontFamily: "'IBM Plex Mono', monospace" }}
                   >
                     {s.tag}
                   </span>
-                  <span className="text-sm pr-4" style={{ color: "var(--dc-text-secondary)" }}>{s.name}</span>
+                  <span className="text-sm pr-4 truncate" style={{ color: "var(--dc-text-secondary)" }}>{s.name}</span>
                   <div>
                     <a
                       href={s.invite}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center px-4 py-1.5 rounded text-xs font-bold transition-colors"
+                      className="inline-flex items-center justify-center px-3 py-1.5 rounded text-xs font-bold transition-colors"
                       style={{ backgroundColor: "var(--dc-green)", color: "#fff" }}
                       onMouseOver={e => (e.currentTarget.style.backgroundColor = "var(--dc-green-hover)")}
                       onMouseOut={e => (e.currentTarget.style.backgroundColor = "var(--dc-green)")}
@@ -225,12 +229,6 @@ export default function Index() {
                       Join Guild
                     </a>
                   </div>
-                  <span
-                    className="text-xs"
-                    style={{ color: "var(--dc-text-muted)", fontFamily: "'IBM Plex Mono', monospace" }}
-                  >
-                    {s.serverId}
-                  </span>
                 </div>
               ))
             )}
