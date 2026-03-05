@@ -159,7 +159,7 @@ export default function Index() {
                   <img src={ps.icon} alt={ps.name} style={{ width: 42, height: 42, borderRadius: "50%", objectFit: "cover", flexShrink: 0, border: `2px solid ${ps.color}` }} />
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#dbdee1", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{ps.emoji} {ps.name}</div>
-                    <div style={{ fontSize: "0.72rem", color: "#80848e", marginTop: 1 }}>{ps.members} участников · #{ps.tag} TAG</div>
+                    <div style={{ fontSize: "0.72rem", color: "#80848e", marginTop: 1 }}>{ps.members} members · #{ps.tag} TAG</div>
                   </div>
                   <div style={{ flexShrink: 0, fontSize: "0.72rem", fontWeight: 700, color: "#fff", padding: "5px 12px", borderRadius: 6, background: ps.color, whiteSpace: "nowrap" }}>Join Guild</div>
                 </a>
@@ -184,17 +184,7 @@ export default function Index() {
         );
       })()}
 
-      {/* Hero */}
-      <section className="pt-2 pb-4 text-center animate-fade-in px-4">
-        <p className="hero-text text-sm" style={{ color: "var(--dc-text-muted)" }}>
-          We are currently tracking over{" "}
-          <span className="font-semibold" style={{ color: "var(--dc-text-primary)" }}>{TOTAL_TAGS.toLocaleString("en-US")}</span>{" "}
-          tags. The largest tag directory on{" "}
-          <span className="font-semibold" style={{ color: "#5865f2" }}>Discord</span>.
-        </p>
-      </section>
-
-      <div className="max-w-2xl mx-auto px-3 sm:px-4">
+      <div className="max-w-2xl mx-auto px-3 sm:px-4" style={{ marginTop: 16 }}>
 
         {/* Add server row */}
         <div className="mb-3">
