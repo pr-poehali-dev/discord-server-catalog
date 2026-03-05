@@ -161,20 +161,21 @@ export default function Index() {
                     <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#dbdee1", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{ps.emoji} {ps.name}</div>
                     <div style={{ fontSize: "0.72rem", color: "#80848e", marginTop: 1 }}>{ps.members} участников · #{ps.tag} TAG</div>
                   </div>
-                  <div style={{ flexShrink: 0, fontSize: "0.72rem", fontWeight: 700, color: "#fff", padding: "5px 12px", borderRadius: 6, background: ps.color, whiteSpace: "nowrap" }}>Перейти</div>
+                  <div style={{ flexShrink: 0, fontSize: "0.72rem", fontWeight: 700, color: "#fff", padding: "5px 12px", borderRadius: 6, background: ps.color, whiteSpace: "nowrap" }}>Join Guild</div>
                 </a>
               </div>
               <div style={{ height: 1, margin: "0 -14px 8px", background: `linear-gradient(90deg, transparent, ${ps.color}44, transparent)` }} />
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: "0.78rem", fontWeight: 700, color: "#dbdee1", marginBottom: 2 }}>🎉 Пятничный розыгрыш</div>
+                  <div style={{ fontSize: "0.78rem", fontWeight: 700, color: "#dbdee1", marginBottom: 2 }}>🎉 Friday Giveaway</div>
                   <div style={{ fontSize: "0.7rem", color: "#80848e", lineHeight: 1.4 }}>
-                    Каждую пятницу сервер из каталога рекламируется с пингом{" "}
+                    Every Friday we pick a random server from the catalog and do a 7-day ad with{" "}
                     <span style={{ background: "rgba(88,101,242,0.25)", color: "#8891f7", borderRadius: 3, padding: "0 3px", fontWeight: 600 }}>@everyone</span>
+                    {" "}on the 4 servers listed above, with a combined audience of over 600,000 members!
                   </div>
                 </div>
                 <div style={{ flexShrink: 0, textAlign: "right" as const }}>
-                  <div style={{ fontSize: "0.62rem", color: "#80848e", textTransform: "uppercase" as const, letterSpacing: "0.05em", marginBottom: 2 }}>До розыгрыша</div>
+                  <div style={{ fontSize: "0.62rem", color: "#80848e", textTransform: "uppercase" as const, letterSpacing: "0.05em", marginBottom: 2 }}>Next results through</div>
                   <div style={{ fontSize: "1rem", fontWeight: 800, color: ps.color, fontFamily: "'IBM Plex Mono', monospace" }}>{countdown}</div>
                 </div>
               </div>
