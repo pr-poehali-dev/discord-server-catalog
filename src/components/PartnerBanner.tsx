@@ -50,25 +50,25 @@ function getNextFriday() {
 }
 
 function useCountdown(target: Date) {
-  const targetMs = target.getTime();
-  const [ms, setMs] = useState(() => Math.max(0, targetMs - Date.now()));
+  const calc = () => Math.max(0, target.getTime() - Date.now());
+  const [ms, setMs] = useState(calc);
   useEffect(() => {
-    const id = setInterval(() => setMs(Math.max(0, targetMs - Date.now())), 1000);
+    const id = setInterval(() => setMs(calc()), 1000);
     return () => clearInterval(id);
-  }, [targetMs]);
-  const totalSec = Math.floor(ms / 1000);
-  const d = Math.floor(totalSec / 86400);
-  const h = Math.floor((totalSec % 86400) / 3600);
-  const m = Math.floor((totalSec % 3600) / 60);
-  const s = totalSec % 60;
-  return { d, h, m, s };
+  }, [target]);
+  const s = Math.floor(ms / 1000);
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  const sec = s % 60;
+  const d = Math.floor(h / 24);
+  const hh = h % 24;
+  return { d, h: hh, m, s: sec };
 }
-
-const NEXT_FRIDAY = getNextFriday();
 
 export default function PartnerBanner() {
   const [active, setActive] = useState(0);
-  const { d, h, m, s } = useCountdown(NEXT_FRIDAY);
+  const friday = getNextFriday();
+  const { d, h, m, s } = useCountdown(friday);
 
   useEffect(() => {
     const id = setInterval(() => setActive(a => (a + 1) % SERVERS.length), 3000);
