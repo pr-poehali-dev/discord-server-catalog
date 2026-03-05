@@ -62,10 +62,10 @@ const TOTAL_TAGS = 61774;
 const PER_PAGE = 10;
 
 const PARTNER_SERVERS = [
-  { name: "MIKU Community", tag: "MIKU", members: "241 911", color: "#00d4ff", emoji: "💙", invite: "https://discord.gg/miku", icon: "https://media.discordapp.net/attachments/895103535551741990/1477358183180669019/MIKU_Community.png?ex=69aa6746&is=69a915c6&hm=788a80a21278becf0981953c3d7a85d11400f1bc4f49c12fb96d26048bea4fdc&=&format=webp&quality=lossless&width=544&height=544" },
-  { name: "YAOI Community",  tag: "YAOI", members: "188 442", color: "#fdae73", emoji: "💗", invite: "https://discord.gg/yaoi", icon: "https://media.discordapp.net/attachments/895103535551741990/1477358184195952721/YA0I_Community.gif?ex=69aa6747&is=69a915c7&hm=db01191d3eb67f6f993f293d0414ebc6abad04d61a117a7e0bccb1ba42ae317f&=" },
-  { name: "YURI Community",  tag: "YURI", members: "143 514", color: "#ff87c5", emoji: "💜", invite: "https://discord.gg/yuri", icon: "https://media.discordapp.net/attachments/895103535551741990/1477358185458307174/YURI_Community.png?ex=69aa6747&is=69a915c7&hm=333a646157caf02c78795e973f0a60510a03357d360addf2914caa4e757c7894&=&format=webp&quality=lossless&width=544&height=544" },
-  { name: "TETO Community",  tag: "TETO", members: "70 742",  color: "#e85555", emoji: "❤️", invite: "https://discord.gg/teto", icon: "https://media.discordapp.net/attachments/895103535551741990/1477358185709834251/TETO_Community.gif?ex=69aa6747&is=69a915c7&hm=53987fe39dff14b7338dca365d45959d172b60810bfa05d7be73c0a158b3715d&=" },
+  { name: "MIKU Community", tag: "MIKU", members: "241 911", color: "#00d4ff", badge: "https://images-ext-1.discordapp.net/external/PsTFh4_NvvsOF0hAD-5EtJJk2t_TiYWhQvsWZEZ4yik/%3Fsize%3D512/https/cdn.discordapp.com/clan-badges/1369047464073498776/d84985dab45c3cdcf569e45b89851750.png?format=webp&quality=lossless", invite: "https://discord.gg/miku", icon: "https://media.discordapp.net/attachments/895103535551741990/1477358183180669019/MIKU_Community.png?ex=69aa6746&is=69a915c6&hm=788a80a21278becf0981953c3d7a85d11400f1bc4f49c12fb96d26048bea4fdc&=&format=webp&quality=lossless&width=544&height=544" },
+  { name: "YAOI Community",  tag: "YAOI", members: "188 442", color: "#fdae73", badge: "https://images-ext-1.discordapp.net/external/tsOwOCCksSljPIZ_cYzb4tQ_hcvTc8NrIbEYZBxCa5E/%3Fsize%3D512/https/cdn.discordapp.com/clan-badges/1369363539332042853/ec4d163a80f8aaea41bb12d3af53afa0.png?format=webp&quality=lossless", invite: "https://discord.gg/yaoi", icon: "https://media.discordapp.net/attachments/895103535551741990/1477358184195952721/YA0I_Community.gif?ex=69aa6747&is=69a915c7&hm=db01191d3eb67f6f993f293d0414ebc6abad04d61a117a7e0bccb1ba42ae317f&=" },
+  { name: "YURI Community",  tag: "YURI", members: "143 514", color: "#ff87c5", badge: "https://images-ext-1.discordapp.net/external/WcE5hUdj0moC8p9j18hrUs9deyWEnJctnC66qPCOd8I/%3Fsize%3D512/https/cdn.discordapp.com/clan-badges/1369076925389078609/ec60c5e6d1f14d3bbff586e2e0b9e54e.png?format=webp&quality=lossless", invite: "https://discord.gg/yuri", icon: "https://media.discordapp.net/attachments/895103535551741990/1477358185458307174/YURI_Community.png?ex=69aa6747&is=69a915c7&hm=333a646157caf02c78795e973f0a60510a03357d360addf2914caa4e757c7894&=&format=webp&quality=lossless&width=544&height=544" },
+  { name: "TETO Community",  tag: "TETO", members: "70 742",  color: "#e85555", badge: "https://images-ext-1.discordapp.net/external/AWpZ2gB5T4EzK4iTK2gBgVDCz_bIxapdZFd7sL5ztw8/%3Fsize%3D512/https/cdn.discordapp.com/clan-badges/1369106099608748102/878c62b6694a4f5931104f766191bec7.png?format=webp&quality=lossless", invite: "https://discord.gg/teto", icon: "https://media.discordapp.net/attachments/895103535551741990/1477358185709834251/TETO_Community.gif?ex=69aa6747&is=69a915c7&hm=53987fe39dff14b7338dca365d45959d172b60810bfa05d7be73c0a158b3715d&=" },
 ];
 
 export default function Index() {
@@ -158,7 +158,10 @@ export default function Index() {
                 <a href={ps.invite} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", borderRadius: 8, padding: "4px 2px" }}>
                   <img src={ps.icon} alt={ps.name} style={{ width: 42, height: 42, borderRadius: "50%", objectFit: "cover", flexShrink: 0, border: `2px solid ${ps.color}` }} />
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#dbdee1", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{ps.emoji} {ps.name}</div>
+                    <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#dbdee1", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "flex", alignItems: "center", gap: 5 }}>
+                      <img src={ps.badge} alt="" style={{ width: 16, height: 16, objectFit: "contain", flexShrink: 0 }} />
+                      {ps.name}
+                    </div>
                     <div style={{ fontSize: "0.72rem", color: "#80848e", marginTop: 1 }}>{ps.members} members · #{ps.tag} TAG</div>
                   </div>
                   <div style={{ flexShrink: 0, fontSize: "0.72rem", fontWeight: 700, color: "#fff", padding: "5px 12px", borderRadius: 6, background: ps.color, whiteSpace: "nowrap" }}>Join Guild</div>
