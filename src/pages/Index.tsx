@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
-import PartnerBanner from "@/components/PartnerBanner";
 
 const BADGES = [
   "https://cdn.poehali.dev/projects/cc4018f2-6167-4801-8617-92fa7ab11a28/bucket/62f9f0bd-7ae0-4df5-bc99-86c7b18e5341.png",
@@ -62,11 +61,50 @@ const MOCK_SERVERS = [
 const TOTAL_TAGS = 61774;
 const PER_PAGE = 10;
 
+const PARTNER_SERVERS = [
+  { name: "MIKU Community", tag: "MIKU", members: "241 911", color: "#00d4ff", emoji: "💙", invite: "https://discord.gg/miku", icon: "https://cdn.poehali.dev/projects/cc4018f2-6167-4801-8617-92fa7ab11a28/bucket/85cd9d82-6cf3-4959-88f7-38678b62abec.png" },
+  { name: "YAOI Community",  tag: "YAOI", members: "188 442", color: "#ff6eb4", emoji: "💗", invite: "https://discord.gg/yaoi", icon: "https://cdn.poehali.dev/projects/cc4018f2-6167-4801-8617-92fa7ab11a28/bucket/3862d535-df6e-4574-b619-c1a0dc44360b.png" },
+  { name: "YURI Community",  tag: "YURI", members: "143 514", color: "#c084fc", emoji: "💜", invite: "https://discord.gg/yuri", icon: "https://cdn.poehali.dev/projects/cc4018f2-6167-4801-8617-92fa7ab11a28/bucket/d025ac2b-eaa5-4f74-baaa-573b744b6c24.png" },
+  { name: "TETO Community",  tag: "TETO", members: "70 742",  color: "#f87171", emoji: "❤️", invite: "https://discord.gg/teto", icon: "https://cdn.poehali.dev/projects/cc4018f2-6167-4801-8617-92fa7ab11a28/bucket/faf70b41-3eff-4902-913b-a7b8e1094f7f.png" },
+];
+
 export default function Index() {
   const [search, setSearch] = useState("");
   const [inviteInput, setInviteInput] = useState("");
   const [page, setPage] = useState(1);
   const [addSuccess, setAddSuccess] = useState(false);
+  const [partnerActive, setPartnerActive] = useState(0);
+  const [countdown, setCountdown] = useState("--:--:--");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPartnerActive(a => (a + 1) % PARTNER_SERVERS.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const tick = () => {
+      const now = new Date();
+      const diff = (5 - now.getDay() + 7) % 7 || 7;
+      const friday = new Date(now);
+      friday.setDate(now.getDate() + diff);
+      friday.setHours(18, 0, 0, 0);
+      const ms = Math.max(0, friday.getTime() - now.getTime());
+      const totalSec = Math.floor(ms / 1000);
+      const d = Math.floor(totalSec / 86400);
+      const h = Math.floor((totalSec % 86400) / 3600);
+      const m = Math.floor((totalSec % 3600) / 60);
+      const s = totalSec % 60;
+      const hh = String(h).padStart(2, "0");
+      const mm = String(m).padStart(2, "0");
+      const ss = String(s).padStart(2, "0");
+      setCountdown(d > 0 ? `${d}д ${hh}:${mm}:${ss}` : `${hh}:${mm}:${ss}`);
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
 
   const filtered = MOCK_SERVERS.filter(s => {
     const q = search.toLowerCase();
@@ -102,7 +140,48 @@ export default function Index() {
       </nav>
 
       {/* Partner Banner */}
-      <PartnerBanner />
+      {(() => {
+        const ps = PARTNER_SERVERS[partnerActive];
+        return (
+          <div style={{ maxWidth: 672, margin: "20px auto 0", padding: "0 12px" }}>
+            <div style={{ position: "relative", overflow: "hidden", borderRadius: 12, border: "1px solid rgba(255,255,255,0.08)", background: "#2b2d31", padding: "12px 14px 10px" }}>
+              <div style={{ position: "absolute", top: -60, right: -60, width: 180, height: 180, borderRadius: "50%", background: ps.color, opacity: 0.07, filter: "blur(40px)", pointerEvents: "none" }} />
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                <span style={{ fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase" as const, color: "#80848e" }}>⚡ Powered by</span>
+                <div style={{ display: "flex", gap: 5 }}>
+                  {PARTNER_SERVERS.map((srv, i) => (
+                    <button key={i} onClick={() => setPartnerActive(i)} style={{ width: 6, height: 6, borderRadius: "50%", border: "none", cursor: "pointer", padding: 0, background: i === partnerActive ? srv.color : "rgba(255,255,255,0.2)" }} />
+                  ))}
+                </div>
+              </div>
+              <div style={{ marginBottom: 8 }}>
+                <a href={ps.invite} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", borderRadius: 8, padding: "4px 2px" }}>
+                  <img src={ps.icon} alt={ps.name} style={{ width: 42, height: 42, borderRadius: "50%", objectFit: "cover", flexShrink: 0, border: `2px solid ${ps.color}` }} />
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#dbdee1", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{ps.emoji} {ps.name}</div>
+                    <div style={{ fontSize: "0.72rem", color: "#80848e", marginTop: 1 }}>{ps.members} участников · #{ps.tag} TAG</div>
+                  </div>
+                  <div style={{ flexShrink: 0, fontSize: "0.72rem", fontWeight: 700, color: "#fff", padding: "5px 12px", borderRadius: 6, background: ps.color, whiteSpace: "nowrap" }}>Перейти</div>
+                </a>
+              </div>
+              <div style={{ height: 1, margin: "0 -14px 8px", background: `linear-gradient(90deg, transparent, ${ps.color}44, transparent)` }} />
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: "0.78rem", fontWeight: 700, color: "#dbdee1", marginBottom: 2 }}>🎉 Пятничный розыгрыш</div>
+                  <div style={{ fontSize: "0.7rem", color: "#80848e", lineHeight: 1.4 }}>
+                    Каждую пятницу сервер из каталога рекламируется с пингом{" "}
+                    <span style={{ background: "rgba(88,101,242,0.25)", color: "#8891f7", borderRadius: 3, padding: "0 3px", fontWeight: 600 }}>@everyone</span>
+                  </div>
+                </div>
+                <div style={{ flexShrink: 0, textAlign: "right" as const }}>
+                  <div style={{ fontSize: "0.62rem", color: "#80848e", textTransform: "uppercase" as const, letterSpacing: "0.05em", marginBottom: 2 }}>До розыгрыша</div>
+                  <div style={{ fontSize: "1rem", fontWeight: 800, color: ps.color, fontFamily: "'IBM Plex Mono', monospace" }}>{countdown}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Hero */}
       <section className="pt-2 pb-4 text-center animate-fade-in px-4">
