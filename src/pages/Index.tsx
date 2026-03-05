@@ -62,10 +62,10 @@ const TOTAL_TAGS = 61774;
 const PER_PAGE = 10;
 
 const PARTNER_SERVERS = [
-  { name: "MIKU Community", tag: "MIKU", members: "241 911", color: "#00d4ff", emoji: "💙", invite: "https://discord.gg/miku", icon: "https://cdn.poehali.dev/projects/cc4018f2-6167-4801-8617-92fa7ab11a28/bucket/85cd9d82-6cf3-4959-88f7-38678b62abec.png" },
-  { name: "YAOI Community",  tag: "YAOI", members: "188 442", color: "#ff6eb4", emoji: "💗", invite: "https://discord.gg/yaoi", icon: "https://cdn.poehali.dev/projects/cc4018f2-6167-4801-8617-92fa7ab11a28/bucket/3862d535-df6e-4574-b619-c1a0dc44360b.png" },
-  { name: "YURI Community",  tag: "YURI", members: "143 514", color: "#c084fc", emoji: "💜", invite: "https://discord.gg/yuri", icon: "https://cdn.poehali.dev/projects/cc4018f2-6167-4801-8617-92fa7ab11a28/bucket/d025ac2b-eaa5-4f74-baaa-573b744b6c24.png" },
-  { name: "TETO Community",  tag: "TETO", members: "70 742",  color: "#f87171", emoji: "❤️", invite: "https://discord.gg/teto", icon: "https://cdn.poehali.dev/projects/cc4018f2-6167-4801-8617-92fa7ab11a28/bucket/faf70b41-3eff-4902-913b-a7b8e1094f7f.png" },
+  { name: "MIKU Community", tag: "MIKU", members: "241 911", color: "#00d4ff", emoji: "💙", invite: "https://discord.gg/miku", icon: "https://media.discordapp.net/attachments/895103535551741990/1477358183180669019/MIKU_Community.png?ex=69aa6746&is=69a915c6&hm=788a80a21278becf0981953c3d7a85d11400f1bc4f49c12fb96d26048bea4fdc&=&format=webp&quality=lossless&width=544&height=544" },
+  { name: "YAOI Community",  tag: "YAOI", members: "188 442", color: "#ff6eb4", emoji: "💗", invite: "https://discord.gg/yaoi", icon: "https://media.discordapp.net/attachments/895103535551741990/1477358184195952721/YA0I_Community.gif?ex=69aa6747&is=69a915c7&hm=db01191d3eb67f6f993f293d0414ebc6abad04d61a117a7e0bccb1ba42ae317f&=" },
+  { name: "YURI Community",  tag: "YURI", members: "143 514", color: "#c084fc", emoji: "💜", invite: "https://discord.gg/yuri", icon: "https://media.discordapp.net/attachments/895103535551741990/1477358185458307174/YURI_Community.png?ex=69aa6747&is=69a915c7&hm=333a646157caf02c78795e973f0a60510a03357d360addf2914caa4e757c7894&=&format=webp&quality=lossless&width=544&height=544" },
+  { name: "TETO Community",  tag: "TETO", members: "70 742",  color: "#f87171", emoji: "❤️", invite: "https://discord.gg/teto", icon: "https://media.discordapp.net/attachments/895103535551741990/1477358185709834251/TETO_Community.gif?ex=69aa6747&is=69a915c7&hm=53987fe39dff14b7338dca365d45959d172b60810bfa05d7be73c0a158b3715d&=" },
 ];
 
 export default function Index() {
