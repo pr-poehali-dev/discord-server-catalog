@@ -101,8 +101,8 @@ export default function Index() {
       </nav>
 
       {/* Hero */}
-      <section className="pt-10 pb-5 text-center animate-fade-in">
-        <p className="text-sm" style={{ color: "var(--dc-text-muted)" }}>
+      <section className="pt-8 pb-4 text-center animate-fade-in px-4">
+        <p className="hero-text text-sm" style={{ color: "var(--dc-text-muted)" }}>
           We are currently tracking over{" "}
           <span className="font-semibold" style={{ color: "var(--dc-text-primary)" }}>{TOTAL_TAGS.toLocaleString("en-US")}</span>{" "}
           tags. The largest tag directory on{" "}
@@ -110,13 +110,13 @@ export default function Index() {
         </p>
       </section>
 
-      <div className="max-w-2xl mx-auto px-4">
+      <div className="max-w-2xl mx-auto px-3 sm:px-4">
 
         {/* Add server row */}
         <div className="mb-3">
           <div className="flex items-center gap-2">
             <div
-              className="flex-1 flex items-center gap-2 px-4 py-2.5 rounded"
+              className="invite-input-wrap flex-1 flex items-center gap-2 px-4 py-2.5 rounded"
               style={{ backgroundColor: "var(--dc-bg-secondary)", border: "1px solid var(--dc-border)" }}
             >
               <input
@@ -144,17 +144,17 @@ export default function Index() {
         {/* Search */}
         <div className="mb-3">
           <div
-            className="flex items-center gap-3 px-4 py-2.5 rounded"
+            className="search-input flex items-center gap-3 px-4 py-2.5 rounded"
             style={{ backgroundColor: "var(--dc-bg-secondary)", border: "1px solid var(--dc-border)" }}
           >
-            <Icon name="Search" size={15} style={{ color: "var(--dc-text-muted)", flexShrink: 0 }} />
+            <Icon name="Search" size={16} style={{ color: "var(--dc-text-muted)", flexShrink: 0 }} />
             <input
               type="text"
               placeholder="Search for tags, servers, or server IDs..."
               value={search}
               onChange={e => handleSearch(e.target.value)}
-              className="flex-1 bg-transparent outline-none text-sm"
-              style={{ color: "var(--dc-text-primary)" }}
+              className="flex-1 bg-transparent outline-none"
+              style={{ color: "var(--dc-text-primary)", fontSize: "inherit" }}
             />
             {search && (
               <button onClick={() => { setSearch(""); setPage(1); }} style={{ color: "var(--dc-text-muted)" }}>
@@ -175,7 +175,7 @@ export default function Index() {
 
             {/* Header */}
             <div
-              className="table-grid grid text-xs font-bold uppercase tracking-wider px-4 py-3"
+              className="table-header grid text-xs font-bold uppercase tracking-wider px-4 py-3"
               style={{
                 gridTemplateColumns: "44px 90px 1fr 110px",
                 backgroundColor: "var(--dc-bg-secondary)",
@@ -183,7 +183,7 @@ export default function Index() {
                 borderBottom: "1px solid var(--dc-border)"
               }}
             >
-              <span className="table-col-badge">Badge</span>
+              <span>Badge</span>
               <span>Tag</span>
               <span>Server Name</span>
               <span>Invite</span>
@@ -199,7 +199,7 @@ export default function Index() {
               paginated.map((s, i) => (
                 <div
                   key={s.id}
-                  className="table-grid server-row grid items-center px-4"
+                  className="server-row grid items-center px-4"
                   style={{
                     gridTemplateColumns: "44px 90px 1fr 110px",
                     backgroundColor: "var(--dc-bg-tertiary)",
@@ -207,15 +207,15 @@ export default function Index() {
                     minHeight: "52px",
                   }}
                 >
-                  <img src={s.badge} alt="badge" className="table-col-badge w-7 h-7 object-contain" style={{ imageRendering: "pixelated" }} />
+                  <img src={s.badge} alt="badge" className="col-badge w-8 h-8 object-contain" style={{ imageRendering: "pixelated" }} />
                   <span
-                    className="font-bold tracking-wider"
+                    className="col-tag font-bold tracking-wider"
                     style={{ color: "var(--dc-text-primary)", fontSize: "0.9rem" }}
                   >
                     {s.tag}
                   </span>
-                  <span className="text-sm pr-3 truncate" style={{ color: "var(--dc-text-muted)" }}>{s.name}</span>
-                  <div>
+                  <span className="col-name text-sm pr-3 truncate" style={{ color: "var(--dc-text-muted)" }}>{s.name}</span>
+                  <div className="col-invite">
                     <a href={s.invite} target="_blank" rel="noopener noreferrer" className="join-btn">
                       Join Guild
                     </a>
