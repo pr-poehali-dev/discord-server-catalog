@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
+import PartnerBanner from "@/components/PartnerBanner";
 
 const BADGES = [
   "https://cdn.poehali.dev/projects/cc4018f2-6167-4801-8617-92fa7ab11a28/bucket/62f9f0bd-7ae0-4df5-bc99-86c7b18e5341.png",
@@ -99,6 +100,9 @@ export default function Index() {
           </div>
         </div>
       </nav>
+
+      {/* Partner Banner */}
+      <PartnerBanner />
 
       {/* Hero */}
       <section className="pt-2 pb-4 text-center animate-fade-in px-4">
