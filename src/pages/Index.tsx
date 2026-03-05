@@ -131,11 +131,8 @@ export default function Index() {
 
       {/* Navbar */}
       <nav style={{ backgroundColor: "var(--dc-bg-secondary)", borderBottom: "1px solid var(--dc-border)" }}>
-        <div className="max-w-2xl mx-auto px-4 h-14 flex items-center">
-          <div className="flex items-center gap-2">
-            <span className="text-xl">🏷️</span>
-            <span className="font-semibold text-sm tracking-wide" style={{ color: "var(--dc-text-primary)" }}>Guild Tags</span>
-          </div>
+        <div className="h-14 flex items-center justify-center">
+          <span className="font-semibold text-sm tracking-wide" style={{ color: "var(--dc-text-primary)" }}>Discord Tags Promotion</span>
         </div>
       </nav>
 
