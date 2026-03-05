@@ -131,8 +131,8 @@ export default function Index() {
             </div>
             <button
               onClick={handleAdd}
-              className="flex items-center gap-2 px-5 py-2.5 rounded text-sm font-bold transition-colors whitespace-nowrap"
-              style={{ backgroundColor: "var(--dc-green)", color: "#fff" }}
+              className="flex items-center gap-2 px-5 py-2.5 text-sm font-bold transition-colors whitespace-nowrap"
+              style={{ backgroundColor: "var(--dc-green)", color: "#fff", borderRadius: "8px" }}
               onMouseOver={e => (e.currentTarget.style.backgroundColor = "var(--dc-green-hover)")}
               onMouseOut={e => (e.currentTarget.style.backgroundColor = "var(--dc-green)")}
             >
@@ -191,7 +191,7 @@ export default function Index() {
             >
               <span>Badge</span>
               <span>Tag</span>
-              <span>Server</span>
+              <span>Server Name</span>
               <span>Invite</span>
             </div>
 
@@ -218,19 +218,19 @@ export default function Index() {
                 >
                   <img src={s.badge} alt="badge" className="w-7 h-7 object-contain" style={{ imageRendering: "pixelated" }} />
                   <span
-                    className="text-xs font-bold tracking-widest"
-                    style={{ color: "var(--dc-accent)", fontFamily: "'IBM Plex Mono', monospace" }}
+                    className="font-bold tracking-wider"
+                    style={{ color: "var(--dc-text-primary)", fontFamily: "'IBM Plex Sans', sans-serif", fontSize: "0.9rem" }}
                   >
                     {s.tag}
                   </span>
-                  <span className="text-sm pr-4 truncate" style={{ color: "var(--dc-text-secondary)" }}>{s.name}</span>
+                  <span className="text-sm pr-4 truncate" style={{ color: "var(--dc-text-muted)" }}>{s.name}</span>
                   <div>
                     <a
                       href={s.invite}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center px-3 py-1.5 rounded text-xs font-bold transition-colors"
-                      style={{ backgroundColor: "var(--dc-green)", color: "#fff" }}
+                      className="inline-flex items-center justify-center px-4 py-1.5 text-xs font-bold transition-colors"
+                      style={{ backgroundColor: "var(--dc-green)", color: "#fff", borderRadius: "6px" }}
                       onMouseOver={e => (e.currentTarget.style.backgroundColor = "var(--dc-green-hover)")}
                       onMouseOut={e => (e.currentTarget.style.backgroundColor = "var(--dc-green)")}
                     >
