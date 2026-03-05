@@ -92,7 +92,7 @@ export default function Index() {
 
       {/* Navbar */}
       <nav style={{ backgroundColor: "var(--dc-bg-secondary)", borderBottom: "1px solid var(--dc-border)" }}>
-        <div className="max-w-5xl mx-auto px-6 h-14 flex items-center">
+        <div className="max-w-2xl mx-auto px-4 h-14 flex items-center">
           <div className="flex items-center gap-2">
             <span className="text-xl">🏷️</span>
             <span className="font-semibold text-sm tracking-wide" style={{ color: "var(--dc-text-primary)" }}>Guild Tags</span>
@@ -110,7 +110,7 @@ export default function Index() {
         </p>
       </section>
 
-      <div className="max-w-2xl mx-auto px-6">
+      <div className="max-w-2xl mx-auto px-4">
 
         {/* Add server row */}
         <div className="mb-3">
@@ -129,13 +129,7 @@ export default function Index() {
                 style={{ color: "var(--dc-text-primary)" }}
               />
             </div>
-            <button
-              onClick={handleAdd}
-              className="flex items-center gap-2 px-5 py-2.5 text-sm font-bold transition-colors whitespace-nowrap"
-              style={{ backgroundColor: "var(--dc-green)", color: "#fff", borderRadius: "8px" }}
-              onMouseOver={e => (e.currentTarget.style.backgroundColor = "var(--dc-green-hover)")}
-              onMouseOut={e => (e.currentTarget.style.backgroundColor = "var(--dc-green)")}
-            >
+            <button onClick={handleAdd} className="add-btn">
               <Icon name="Plus" size={15} />
               Add
             </button>
@@ -181,15 +175,15 @@ export default function Index() {
 
             {/* Header */}
             <div
-              className="grid text-xs font-bold uppercase tracking-wider px-5 py-3"
+              className="table-grid grid text-xs font-bold uppercase tracking-wider px-4 py-3"
               style={{
-                gridTemplateColumns: "44px 90px 1fr 120px",
+                gridTemplateColumns: "44px 90px 1fr 110px",
                 backgroundColor: "var(--dc-bg-secondary)",
                 color: "var(--dc-text-muted)",
                 borderBottom: "1px solid var(--dc-border)"
               }}
             >
-              <span>Badge</span>
+              <span className="table-col-badge">Badge</span>
               <span>Tag</span>
               <span>Server Name</span>
               <span>Invite</span>
@@ -205,35 +199,24 @@ export default function Index() {
               paginated.map((s, i) => (
                 <div
                   key={s.id}
-                  className="grid items-center px-5 transition-colors"
+                  className="table-grid server-row grid items-center px-4"
                   style={{
-                    gridTemplateColumns: "44px 90px 1fr 120px",
+                    gridTemplateColumns: "44px 90px 1fr 110px",
                     backgroundColor: "var(--dc-bg-tertiary)",
                     borderBottom: i < paginated.length - 1 ? "1px solid var(--dc-border-subtle)" : "none",
-                    minHeight: "50px",
-                    cursor: "default",
+                    minHeight: "52px",
                   }}
-                  onMouseOver={e => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.025)")}
-                  onMouseOut={e => (e.currentTarget.style.backgroundColor = "var(--dc-bg-tertiary)")}
                 >
-                  <img src={s.badge} alt="badge" className="w-7 h-7 object-contain" style={{ imageRendering: "pixelated" }} />
+                  <img src={s.badge} alt="badge" className="table-col-badge w-7 h-7 object-contain" style={{ imageRendering: "pixelated" }} />
                   <span
                     className="font-bold tracking-wider"
-                    style={{ color: "var(--dc-text-primary)", fontFamily: "'IBM Plex Sans', sans-serif", fontSize: "0.9rem" }}
+                    style={{ color: "var(--dc-text-primary)", fontSize: "0.9rem" }}
                   >
                     {s.tag}
                   </span>
-                  <span className="text-sm pr-4 truncate" style={{ color: "var(--dc-text-muted)" }}>{s.name}</span>
+                  <span className="text-sm pr-3 truncate" style={{ color: "var(--dc-text-muted)" }}>{s.name}</span>
                   <div>
-                    <a
-                      href={s.invite}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center px-4 py-1.5 text-xs font-bold transition-colors"
-                      style={{ backgroundColor: "var(--dc-green)", color: "#fff", borderRadius: "6px" }}
-                      onMouseOver={e => (e.currentTarget.style.backgroundColor = "var(--dc-green-hover)")}
-                      onMouseOut={e => (e.currentTarget.style.backgroundColor = "var(--dc-green)")}
-                    >
+                    <a href={s.invite} target="_blank" rel="noopener noreferrer" className="join-btn">
                       Join Guild
                     </a>
                   </div>
@@ -244,26 +227,27 @@ export default function Index() {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between mt-4">
+            <div className="flex items-center justify-between mt-4 gap-2">
               <button
                 disabled={page === 1}
                 onClick={() => setPage(p => p - 1)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-medium transition-colors disabled:opacity-30"
-                style={{ backgroundColor: "var(--dc-bg-secondary)", color: "var(--dc-text-secondary)", border: "1px solid var(--dc-border)" }}
+                className="flex items-center gap-1 px-3 py-1.5 rounded text-xs font-medium disabled:opacity-30"
+                style={{ backgroundColor: "var(--dc-bg-secondary)", color: "var(--dc-text-secondary)", border: "1px solid var(--dc-border)", transition: "opacity 0.1s" }}
               >
                 <Icon name="ChevronLeft" size={13} />
-                Previous
+                <span className="hidden sm:inline">Previous</span>
               </button>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 flex-wrap justify-center">
                 {Array.from({ length: totalPages }, (_, i) => (
                   <button
                     key={i}
                     onClick={() => setPage(i + 1)}
-                    className="w-7 h-7 rounded text-xs font-medium transition-colors"
+                    className="w-7 h-7 rounded text-xs font-medium"
                     style={{
                       backgroundColor: page === i + 1 ? "var(--dc-accent)" : "var(--dc-bg-secondary)",
                       color: page === i + 1 ? "#fff" : "var(--dc-text-muted)",
-                      border: `1px solid ${page === i + 1 ? "var(--dc-accent)" : "var(--dc-border)"}`
+                      border: `1px solid ${page === i + 1 ? "var(--dc-accent)" : "var(--dc-border)"}`,
+                      transition: "background-color 0.1s, color 0.1s",
                     }}
                   >
                     {i + 1}
@@ -273,10 +257,10 @@ export default function Index() {
               <button
                 disabled={page === totalPages}
                 onClick={() => setPage(p => p + 1)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-medium transition-colors disabled:opacity-30"
-                style={{ backgroundColor: "var(--dc-bg-secondary)", color: "var(--dc-text-secondary)", border: "1px solid var(--dc-border)" }}
+                className="flex items-center gap-1 px-3 py-1.5 rounded text-xs font-medium disabled:opacity-30"
+                style={{ backgroundColor: "var(--dc-bg-secondary)", color: "var(--dc-text-secondary)", border: "1px solid var(--dc-border)", transition: "opacity 0.1s" }}
               >
-                Next
+                <span className="hidden sm:inline">Next</span>
                 <Icon name="ChevronRight" size={13} />
               </button>
             </div>

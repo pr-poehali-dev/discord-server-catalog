@@ -70,6 +70,64 @@
   background: var(--dc-text-muted);
 }
 
+/* Row hover — CSS-only, без задержки JS */
+.server-row {
+  transition: background-color 0.1s ease;
+}
+.server-row:hover {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.join-btn {
+  background-color: var(--dc-green);
+  color: #fff;
+  border-radius: 6px;
+  transition:
+    background-color 0.1s ease,
+    transform 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.join-btn:hover {
+  background-color: var(--dc-green-hover);
+  transform: translateY(-1px);
+}
+
+.add-btn {
+  background-color: var(--dc-green);
+  color: #fff;
+  border-radius: 8px;
+  transition: background-color 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+}
+.add-btn:hover {
+  background-color: var(--dc-green-hover);
+}
+
+/* Mobile: скрываем колонки */
+@media (max-width: 600px) {
+  .table-col-badge {
+    display: none;
+  }
+  .table-grid {
+    grid-template-columns: 80px 1fr 100px !important;
+  }
+}
+
 /* Animations */
 @keyframes fade-in {
   from {
