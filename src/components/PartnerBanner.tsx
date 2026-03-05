@@ -81,7 +81,7 @@ export default function PartnerBanner() {
 
   return (
     <div className="partner-banner max-w-2xl mx-auto px-3 sm:px-4 mt-5 mb-4">
-      <div className="partner-card" style={{ "--accent": server.color } as React.CSSProperties}>
+      <div className="partner-card">
 
         {/* Glow background */}
         <div className="partner-glow" style={{ background: server.color }} />
