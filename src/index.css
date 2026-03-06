@@ -141,7 +141,25 @@
     font-size: 1rem;
   }
   .table-header {
-    display: none;
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px !important;
+  }
+  .table-header span:nth-child(1) {
+    flex-shrink: 0;
+    width: 32px;
+  }
+  .table-header span:nth-child(2) {
+    flex-shrink: 0;
+    min-width: 44px;
+  }
+  .table-header span:nth-child(3) {
+    flex: 1;
+    min-width: 0;
+  }
+  .table-header span:nth-child(4) {
+    flex-shrink: 0;
   }
   .server-row {
     display: flex !important;
