@@ -181,7 +181,7 @@ export default function Index() {
                   <div style={{ fontSize: "0.7rem", color: "#80848e", lineHeight: 1.4 }}>
                     Every Friday we pick a random server from the catalog and do a 7-day ad with{" "}
                     <span style={{ background: "rgba(88,101,242,0.25)", color: "#8891f7", borderRadius: 3, padding: "0 3px", fontWeight: 600 }}>@everyone</span>
-                    {" "}on the 4 servers listed above, with a combined audience of over 600,000 members!
+                    {" "}on the 4 servers listed above, with a combined audience of over 650,000 members!
                   </div>
                 </div>
                 <div style={{ flexShrink: 0, textAlign: "right" as const }}>
