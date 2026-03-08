@@ -70,6 +70,69 @@
   background: var(--dc-text-muted);
 }
 
+/* Partner ticker */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partner-ticker-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  padding: 10px 0;
+}
+.partner-ticker-wrap::before,
+.partner-ticker-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+.partner-ticker-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, #2b2d31 0%, transparent 100%);
+}
+.partner-ticker-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, #2b2d31 0%, transparent 100%);
+}
+
+.partner-ticker {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  padding: 0 10px;
+  animation: ticker-scroll 18s linear infinite;
+}
+.partner-ticker-wrap:hover .partner-ticker {
+  animation-play-state: paused;
+}
+
+.partner-ticker-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  min-width: 190px;
+  flex-shrink: 0;
+  transition: filter 0.15s ease;
+}
+.partner-ticker-card:hover {
+  filter: brightness(1.15);
+}
+
 /* Row hover — CSS-only, без задержки JS */
 .server-row {
   transition: background-color 0.1s ease;
