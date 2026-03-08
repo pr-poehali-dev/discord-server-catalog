@@ -143,6 +143,12 @@ export default function Index() {
           <div style={{ maxWidth: 672, margin: "20px auto 0", padding: "0 12px" }}>
             <div style={{ position: "relative", overflow: "hidden", borderRadius: 12, border: "1px solid rgba(255,255,255,0.08)", background: "#2b2d31", padding: "0 0 10px" }}>
 
+              {/* Header */}
+              <div style={{ padding: "10px 14px 6px" }}>
+                <div style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase" as const, color: "#80848e" }}>⚡ Powered by</div>
+                <div style={{ fontSize: "0.7rem", color: "#5c6070", marginTop: 2, lineHeight: 1.4 }}>All servers from the catalog are permanently published on the partner channel on our servers</div>
+              </div>
+
               {/* Scrolling ticker */}
               <div className="partner-ticker-wrap">
                 <div className="partner-ticker">
